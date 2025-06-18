@@ -51,6 +51,14 @@ private string ConvertToString(object value, System.Globalization.CultureInfo cu
         }
         return string.Join(",", valueTextArray);
     }
+    else if (value is DateOnly)
+    {
+        return ((DateOnly)value).ToString("o");
+    }
+    else if (value is DateTimeOffset)
+    {
+        return ((DateTimeOffset)value).ToString("o");
+    }
 
     var result = System.Convert.ToString(value, cultureInfo);
     return result == null ? "" : result;
